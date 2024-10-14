@@ -1,0 +1,110 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+	"name": "Node.js",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {
+			"version": "system"
+		}
+	},
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [3000, 9323],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "yarn install",
+
+	"mounts": [
+    "source=git-data,target=/workspace/.git,type=volume"
+  ],
+
+	// Configure tool-specific properties.
+	"customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      },
+			"extensions": [
+				"aeschli.vscode-css-formatter",
+				"alefragnani.bookmarks",
+				"aykutsarac.jsoncrack-vscode",
+				"bierner.emojisense",
+				"bradlc.vscode-tailwindcss",
+				"cardinal90.multi-cursor-case-preserve",
+				"coenraads.bracket-pair-colorizer-2",
+				"cweijan.dbclient-jdbc",
+				"cweijan.vscode-mysql-client2",
+				"damms005.devdb",
+				"dbaeumer.vscode-eslint",
+				"deerawan.vscode-faker",
+				"devzstudio.emoji-snippets",
+				"ecmel.vscode-html-css",
+				"editorconfig.editorconfig",
+				"esbenp.prettier-vscode",
+				"flydreame.docblocker",
+				"fnando.linter",
+				"formulahendry.auto-close-tag",
+				"formulahendry.auto-rename-tag",
+				"formulahendry.code-runner",
+				"gruntfuggly.activitusbar",
+				"gruntfuggly.todo-tree",
+				"henoc.svgeditor",
+				"huizhou.githd",
+				"humao.rest-client",
+				"hwencc.html-tag-wrapper",
+				"jasonnutter.vscode-codeowners",
+				"jeff-hykin.better-dockerfile-syntax",
+				"jock.svg",
+				"joelcrosby.one-dark-darker",
+				"johnpapa.vscode-peacock",
+				"josee9988.minifyall",
+				"kisstkondoros.vscode-gutter-preview",
+				"mdickin.markdown-shortcuts",
+				"mechatroner.rainbow-csv",
+				"mikestead.dotenv",
+				"mohsen1.prettify-json",
+				"ms-azuretools.vscode-docker",
+				"ms-playwright.playwright",
+				"ms-vscode-remote.remote-containers",
+				"ms-vscode-remote.remote-wsl",
+				"ms-vscode.vscode-typescript-next",
+				"naumovs.color-highlight",
+				"oderwat.indent-rainbow",
+				"odubuc.mysql-inline-decorator",
+				"perkovec.emoji",
+				"pflannery.vscode-versionlens",
+				"pkief.material-icon-theme",
+				"pranaygp.vscode-css-peek",
+				"quicktype.quicktype",
+				"redhat.vscode-yaml",
+				"sainoba.px-to-rem",
+				"shardulm94.trailing-spaces",
+				"shd101wyy.markdown-preview-enhanced",
+				"shufo.vscode-blade-formatter",
+				"sidthesloth.html5-boilerplate",
+				"streetsidesoftware.code-spell-checker",
+				"streetsidesoftware.code-spell-checker-spanish",
+				"thomas-baumgaertner.vcl",
+				"tobermory.es6-string-html",
+				"unifiedjs.vscode-mdx",
+				"usernamehw.errorlens",
+				"vittorioromeo.expand-selection-to-scope",
+				"wayou.vscode-todo-highlight",
+				"wix.vscode-import-cost",
+				"wmaurer.change-case",
+				"xabikos.javascriptsnippets",
+				"yoavbls.pretty-ts-errors",
+				"zignd.html-css-class-completion",
+				"zovorap.ab-html-formatter"
+			]
+    }
+  }
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
