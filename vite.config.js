@@ -9,6 +9,7 @@ export default defineConfig({
     port: parseInt(process.env?.VITE_PORT) || 3000,
     // If the port is busy, vite fails and throws an error
     strictPort: true,
+    host: '0.0.0.0',
     watch: {
       usePolling: true, // Asegura que se detecten cambios en sistemas de archivos montados
     }
