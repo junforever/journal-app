@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, Button, Grid, TextField, Typography } from '@mui/material'
+import { Link, Button, Grid, TextField, Typography, Alert } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 import { AuthLayout } from '../layout'
 import { useForm } from '../../hooks'
@@ -8,9 +8,9 @@ import { startCreatingUserWithEmailPassword } from '../../store/auth'
 import { authTypes } from '../../store/types'
 
 const formData = {
-  email: 'alvaro@gmail.com',
-  password: '123456',
-  displayName: 'junforever'
+  email: '',
+  password: '',
+  displayName: ''
 }
 
 const formValidations = {
@@ -23,10 +23,10 @@ export const RegisterPage = () => {
   const [ formSubmitted, setFormSubmitted ] = useState(false)
   const { displayName, email, password,
     displayNameValid, emailValid, passwordValid,
-    isFormValid, onInputChange } = useForm(formData, formValidations)
+    isFormValid, onInputChange, formState } = useForm(formData, formValidations)
   const dispatch = useDispatch()
-  const { status } = useSelector( state => state.auth )
-  console.log('status:', status)
+  const { status, errorMessage } = useSelector( state => state.auth )
+  const isCheckingAuthentication = useMemo( () => status === authTypes.check , [status])
 
   const onSubmit = ( event ) => {
     event.preventDefault()
@@ -34,12 +34,15 @@ export const RegisterPage = () => {
 
     if( !isFormValid) return
 
-    dispatch(startCreatingUserWithEmailPassword)
+    dispatch( startCreatingUserWithEmailPassword(formState) )
   }
 
   return (
     <AuthLayout title="Crear cuenta">
-      <form onSubmit={ onSubmit }>
+      <form
+        onSubmit={ onSubmit }
+        className="animate__animated animate__fadeIn animate__faster"
+      >
         <Grid container>
           <Grid
             item
@@ -106,12 +109,19 @@ export const RegisterPage = () => {
             <Grid
               item
               xs={ 12 }
+              display={ errorMessage? '': 'none' }
+            >
+              <Alert severity="error">{ errorMessage }</Alert>
+            </Grid>
+            <Grid
+              item
+              xs={ 12 }
             >
               <Button
                 variant="contained"
                 fullWidth
                 type="submit"
-                disabled={ status === authTypes.check }
+                disabled={ isCheckingAuthentication }
               >
                 Crear Cuenta
               </Button>

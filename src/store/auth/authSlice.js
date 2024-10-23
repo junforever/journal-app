@@ -4,7 +4,7 @@ import { authTypes } from '../types'
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    status: authTypes.notAuth, //checking, not-authenticated, authenticated
+    status: authTypes.check, //checking, not-authenticated, authenticated
     uid: null,
     email: null,
     displayName: null,
