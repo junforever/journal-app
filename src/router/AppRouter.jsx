@@ -24,10 +24,10 @@ export const AppRouter = () => {
       <Route path="/*" element={ <Navigate to="/auth/login" />} />
     </Routes>
 
-    //rutas sin proteger
-    // <Routes>
-    //   <Route path="/auth/*" element={ <AuthRoutes />} />
-    //   <Route path="/*" element={ <JournalRoutes />} />
-    // </Routes>
+  //rutas sin proteger
+  // <Routes>
+  //   <Route path="/auth/*" element={ <AuthRoutes />} />
+  //   <Route path="/*" element={ <JournalRoutes />} />
+  // </Routes>
   )
 }
