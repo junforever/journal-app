@@ -38,6 +38,8 @@ export default [
       ],
       'quotes': ['error', 'single', { 'avoidEscape': true }],
       'jsx-quotes': ['error', 'prefer-double'], // Comillas dobles en JSX
+      'react-hooks/exhaustive-deps': 'off',
+      'indent': ['warn', 2]
       // 'react/prop-types': 'off', // Desactiva la regla de prop-types
     },
   },
