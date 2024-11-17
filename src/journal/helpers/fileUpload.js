@@ -1,6 +1,6 @@
 export const fileUpload = async( file ) => {
   try {
-    if(!file) throw new Error( 'No hay ningún archivo' )
+    if(!file) return null //throw new Error( 'No hay ningún archivo' )
     const cloudUrl = 'https://api.cloudinary.com/v1_1/junforever/upload'
     const formData =  new FormData()
     formData.append('upload_preset', 'react-journal')
@@ -17,7 +17,9 @@ export const fileUpload = async( file ) => {
 
     return cloudResp.secure_url
   } catch (error) {
-    throw new Error( error )
+    //throw new Error( error )
+    console.log(error)
+    return null
   }
 
 }
